@@ -1,17 +1,15 @@
-// import * as cdk from 'aws-cdk-lib';
-// import { Template } from 'aws-cdk-lib/assertions';
-// import * as PhilanthropyWatchInfra from '../lib/philanthropy-watch-infra-stack';
+import * as cdk from 'aws-cdk-lib';
+import { Template } from 'aws-cdk-lib/assertions';
+import * as PhilanthropyWatchInfra from '../lib/philanthropy-watch-infra-stack';
 
-// example test. To run these tests, uncomment this file along with the
-// example resource in lib/philanthropy-watch-infra-stack.ts
-test('SQS Queue Created', () => {
-//   const app = new cdk.App();
-//     // WHEN
-//   const stack = new PhilanthropyWatchInfra.PhilanthropyWatchInfraStack(app, 'MyTestStack');
-//     // THEN
-//   const template = Template.fromStack(stack);
+test('Event Created', () => {
+  const app = new cdk.App();
+    // WHEN
+  const stack = new PhilanthropyWatchInfra.PhilanthropyWatchInfraStack(app, 'MyTestStack');
+    // THEN
+  const template = Template.fromStack(stack);
 
-//   template.hasResourceProperties('AWS::SQS::Queue', {
-//     VisibilityTimeout: 300
-//   });
+  template.hasResourceProperties('AWS::Events::Rule', {
+    ScheduleExpression: "cron(0 0 * * ? *)"
+  });
 });
