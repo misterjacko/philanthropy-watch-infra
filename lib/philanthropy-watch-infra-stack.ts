@@ -1,4 +1,4 @@
-import { App, Duration, Stack, StackProps } from 'aws-cdk-lib';
+import { Duration, Stack, StackProps } from 'aws-cdk-lib';
 import { Rule, Schedule } from 'aws-cdk-lib/aws-events';
 import { PythonFunction } from '@aws-cdk/aws-lambda-python-alpha';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
