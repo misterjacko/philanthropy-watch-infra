@@ -1,11 +1,17 @@
-import { App, Stack, StackProps } from 'aws-cdk-lib';
+// import { go } from '@aws-cdk/aws-lambda-go-alpha';
+import { App, Stack, StackProps, aws_events } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
-export class MyStack extends Stack {
+export class PhilanthropyWatch extends Stack {
   constructor(scope: Construct, id: string, props: StackProps = {}) {
     super(scope, id, props);
 
-    // define resources here...
+    new aws_events.Rule(this, 'Daily Shout Out', {
+      schedule: aws_events.Schedule.cron({
+        hour: '0',
+        minute: '0',
+      }),
+    });
   }
 }
 
@@ -17,7 +23,7 @@ const devEnv = {
 
 const app = new App();
 
-new MyStack(app, 'philanthropy-watch-infra-dev', { env: devEnv });
+new PhilanthropyWatch(app, 'philanthropy-watch-infra-dev', { env: devEnv });
 // new MyStack(app, 'philanthropy-watch-infra-prod', { env: prodEnv });
 
 app.synth();
