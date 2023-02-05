@@ -17,13 +17,19 @@ export class PhilanthropyWatchInfraStack extends Stack {
       handler: 'lambda_handler',
       timeout: Duration.seconds(10),
       memorySize: 512,
+      environment: {
+        TWITTER_CONSUMER_KEY: process.env.secrets.TWITTER_CONSUMER_KEY,
+        TWITTER_CONSUMER_SECRET: process.env.secrets.TWITTER_CONSUMER_SECRET,
+        TWITTER_ACCESS_TOKEN: process.env.secrets.TWITTER_ACCESS_TOKEN,
+        TWITTER_ACCESS_TOKEN_SECRET: process.env.secrets.TWITTER_ACCESS_TOKEN_SECRET,
+      }
     });
 
 
     new Rule(this, 'Daily Shout Out Rule', {
       schedule: Schedule.cron({
         hour: '0',
-        minute: '0',
+        minute: '16',
       }),
       targets: [
         new targets.LambdaFunction(shoutOutFunction),
