@@ -1,4 +1,4 @@
-name: CDK Test
+name: CDK Deploy
 
 on: 
   push:
@@ -6,7 +6,7 @@ on:
     - main
 
 jobs:
-  aws_cdk:
+  CDK_DEPLOY:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

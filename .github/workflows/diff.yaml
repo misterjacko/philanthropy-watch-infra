@@ -1,9 +1,9 @@
-name: CDK Test
+name: CDK Diff
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
-  aws_cdk:
+  CDK_DIFF:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
