@@ -13,6 +13,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Install CDK
         run: sh pipeline-scripts/install_cdk.sh
+      - name: Pull Source
+        run: sh pipeline-scripts/clone_source.sh
       - name: CDK Deploy
         run: cdk deploy --require-approval never
         env:
