@@ -20,7 +20,7 @@ export class PhilanthropyWatchInfraStack extends Stack {
     });
 
 
-    const shoutOutRule = new Rule(this, 'Daily Shout Out Rule', {
+    new Rule(this, 'Daily Shout Out Rule', {
       schedule: Schedule.cron({
         hour: '0',
         minute: '0',
