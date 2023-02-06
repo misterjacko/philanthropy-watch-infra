@@ -28,8 +28,8 @@ export class PhilanthropyWatchInfraStack extends Stack {
 
     new Rule(this, 'Daily Shout Out Rule', {
       schedule: Schedule.cron({
-        hour: '0',
-        minute: '16',
+        hour: '16',
+        minute: '0',
       }),
       targets: [
         new targets.LambdaFunction(shoutOutFunction),
